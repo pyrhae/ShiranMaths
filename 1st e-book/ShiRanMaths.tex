@@ -1,0 +1,21 @@
+\documentclass[12pt,twoside,a4paper]{ctexbook}
+\input{preamble}
+
+\everymath{\displaystyle}
+
+\begin{document}
+
+\frontmatter
+\includepdf[pages=-]{cover.pdf}
+\newpage
+\thispagestyle{empty}
+
+\tableofcontents
+
+\mainmatter
+\setcounter{page}{1}
+
+\chapter{\hspace*{10mm} 排列组合}
+\input{content/01.tex}
+
+\end{document}

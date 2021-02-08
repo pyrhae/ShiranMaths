@@ -1,0 +1,414 @@
+\usepackage[top=2.3cm,bottom=1.5cm,
+left=1.7cm,right=1.3cm,headheight=40pt]{geometry}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\usepackage[dvipsnames,x11names]{xcolor}
+\usepackage[skins,theorems]{tcolorbox}
+\usepackage{mathtools,nccmath,tabu}
+% \usepackage{mathspec}
+% \usepackage[BoldFont,SlantFont]{xeCJK}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{tkz-euclide}
+\usetikzlibrary{trees,intersections}
+\usetikzlibrary{calc,arrows.meta,matrix,
+	decorations.pathmorphing,decorations.pathreplacing,
+	backgrounds,shadings,fit,shadows,positioning}
+%\usetkzobj{all}
+
+\usepackage[Symbol]{upgreek}
+\usepackage{pgf,txfonts,wrapfig,wasysym,setspace}
+\usepackage{fancybox,graphicx,enumerate,enumitem,systeme,arcs}
+
+\usepackage{CJKfntef,ulem,fancyhdr,overpic,tabu,nicefrac,subfig}
+\usepackage{polynom,longdivision}
+\usepackage[loose]{units}
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+\usepackage[explicit]{titlesec}
+\usepackage[dotinlabels]{titletoc}
+
+\usepackage{pdfpages}
+
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+% \setCJKmainfont{Noto Serif CJK SC}
+% \setCJKfamilyfont{f03}[Scale=0.9545]{Noto Sans Mono CJK SC Regular}
+
+\setmainfont[Scale=0.9545]{LibreBaskerville-Regular}
+\newfontfamily\fit[Scale=.92]{Georgia Italic}
+\newfontfamily\fb{Junicode-Bold}
+%\newfontfamily\fc[Scale=1.24]{EB Garamond}
+\newfontfamily\fd[Scale=1.03]{Book Antiqua}
+%\newfontfamily\fe{Bodoni 72 Oldstyle}
+%\newfontfamily\fsec{Helvetica Neue}
+%\newfontfamily\Arial[Scale=1.01]{Arial}
+\newfontfamily\myGreek{Times New Roman}
+
+\usepackage{fourier}
+
+\allowdisplaybreaks
+
+\newcommand{\hl}[1]{\bgroup\markoverwith
+	{\textcolor{yellow!80!}
+		{\rule[-.5ex]{2pt}{2.5ex}}}\ULon{#1}}
+\delimitershortfall-1sp
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\sfrac}[2]
+{\text{\scalebox{1.28}[1.24]{\(\frac{#1}{#2}\)}}}
+\newcommand{\ifrac}[2]
+{\text{\scalebox{1.4}[1.3]{\(\frac{#1}{#2}\)}}}
+\newcommand{\iifrac}[2]
+{\text{\scalebox{1.5}[1.42]{\(\frac{#1}{#2}\)}}}
+
+
+\newcommand{\s}{\hspace{0.1em}}
+
+\newcommand{\sol}{\par\tikz {\node
+		[fill=gray!30!white,
+		opacity=.8,
+		rounded corners=4pt]
+		{~解};}\par\medskip}
+
+\newcommand{\circled}[2][]{\tikz[baseline=(char.base)]
+	{\node[shape = circle, draw, inner sep = 1pt]
+		(char) {\phantom{\ifblank{ #1}{#2}{ #1}}};%
+		\node at (char.center) {\makebox[0pt][c]{#2}};}
+		}
+\robustify{\circled}
+
+
+\DeclareMathOperator{\diff}{d\!}
+\DeclareMathOperator{\cosec}{cosec}
+
+
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyfoot[RO,LE]{\thepage}
+\fancyfoot[RE,LO]{牧羊教育}
+\fancyhead[LE,RO]{
+\includegraphics[scale=.43]{images/logo.jpg}}
+
+
+\renewcommand{\headrulewidth}{0.6pt}
+
+\newcommand{\ve}[1]{\overrightarrow{#1}}
+
+\newcommand{\mlim}[1]{\medop\lim\limits_{#1}}
+\newcommand{\msum}[2]{\medop\sum\limits_{#1}^{#2}}
+
+\newcommand{\hchapter}{.755\textheight}
+
+\def\IR{\varmathbb{R}}
+\def\IN{\varmathbb{N}}
+\def\IZ{\varmathbb{Z}}
+\def\IQ{\varmathbb{Q}}
+\def\IC{\varmathbb{C}}
+
+\def\dx{\diff x}
+\def\dy{\diff y}
+\def\dt{\diff t}
+\def\dz{\diff z}
+\def\ds{\diff s}
+\def\dS{\diff S}
+\def\dA{\diff A}
+\def\du{\diff u}
+\def\dv{\diff v}
+\def\dV{\diff V}
+\def\dr{\diff r}
+\def\dtheta{\diff\theta}
+
+\def\dopx{\frac{\diff}{\diff x}}
+\def\dopm{\mfrac{\diff}{\diff x}}
+\def\dopy{\frac{\diff}{\diff y}}
+\def\dopym{\mfrac{\diff}{\diff y}}
+\def\dopt{\frac{\diff}{\diff t}}
+\def\doptm{\mfrac{\diff}{\diff t}}
+\def\dydx{\frac{\diff y}{\diff x}}
+\def\dydxm{\mfrac{\diff y}{\diff x}}
+\def\dxdy{\frac{\diff x}{\diff y}}
+\def\dxdym{\mfrac{\diff x}{\diff y}}
+\def\dydt{\frac{\diff y}{\diff t}}
+\def\dydtm{\mfrac{\diff y}{\diff t}}
+\def\dxdt{\frac{\diff x}{\diff t}}
+\def\dxdtm{\mfrac{\diff x}{\diff t}}
+\def\dydxx{\frac{\diff\!^2 y}{\dx^2}}
+
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\Exp}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\def\rP{\mathrm{P}}
+\def\rC{\mathrm{C}}
+\def\rX{\mathrm{X}}
+\def\rY{\mathrm{Y}}
+\def\rZ{\mathrm{Z}}
+\def\rPi{\mathrm{\pi}}
+\def\card{\mathrm{card}}
+\def\bx{{\mathbf x}}
+\def\bX{{\mathbf X}}
+\def\bf{{\mathbf f}}
+\def\bF{{\mathbf F}}
+\def\br{{\mathbf r}}
+\def\bi{{\mathbf i}}
+\def\bj{{\mathbf j}}
+\def\bk{{\mathbf k}}
+\def\bs{{\mathbf s}}
+\def\bv{{\mathbf v}}
+\def\ba{{\mathbf a}}
+\def\bb{{\mathbf b}}
+\def\bc{{\mathbf c}}
+\def\bF{{\mathbf F}}
+\def\bG{{\mathbf G}}
+\def\bP{{\mathbf P}}
+\def\bA{{\mathbf A}}
+\def\bB{{\mathbf B}}
+\def\bC{{\mathbf C}}
+\def\bD{{\mathbf D}}
+\def\bM{{\mathbf M}}
+\def\bS{{\mathbf S}}
+\def\bT{{\mathbf T}}
+\def\bU{{\mathbf U}}
+\def\bQ{{\mathbf Q}}
+\def\bzero{{\mathbf 0}}
+\def\bI{{\mathbf I}}
+\def\dbr{\diff\br}
+\def\degree{^{\circ}}
+
+\newcommand{\cvec}[2]{\Big(\,\begin{mmatrix}
+#1\\[-1mm]#2
+\end{mmatrix}\,\Big)}
+\newcommand{\cvect}[3]{\Bigg(\,\begin{mmatrix}
+#1\\[-1mm]#2\\[-1mm]#3
+\end{mmatrix}\,\Bigg)}
+
+\linespread{1.3}
+
+
+\tikzstyle{every picture}+=[remember picture]
+
+\tikzstyle{notesty}
+=[draw=red, %fill=pink!10,
+very thin,rectangle,
+rounded corners, inner sep=10pt, inner ysep=16pt,
+text=black]
+\tikzstyle{notestytitle}
+=[fill=red!90, text=white]
+
+
+\newtcolorbox{Note}[1]{enhanced,title={\fb note },
+		colframe=red,colback=white,
+		arc=2pt,colbacktitle=red!80,
+		coltitle=white,
+		boxrule=.35pt,
+		width={#1},
+		before skip=7pt, after skip=15pt,
+		drop lifted shadow=red!70,
+		attach boxed title to top left=
+		{xshift=1.6mm,yshift=-2.2mm},
+		boxed title style={enhanced,
+			skin=enhancedfirst jigsaw,
+			size=small,arc=0pt,
+			interior style={top color=red!60,
+				bottom color=red!80}}}
+
+\newcounter{Ex}[chapter]
+\renewcommand{\theEx}{\arabic{Ex}}
+\newcommand{\MyExample}
+{{\CJKfamily{f12}范例} \refstepcounter{Ex}\scalebox{1.02}[1.02]
+	{\textbf{\fd\theEx}}\hspace{1pt}}
+
+\tcbuselibrary{skins,breakable,xparse}
+
+\newtcolorbox{basicproperty}[1][\textheight]{
+	enhanced,
+	colframe=%cyan!74,
+	black!70,
+	colback=white,
+	leftrule=1pt,
+	rightrule=1pt,
+	bottomrule=1pt,
+	boxsep=1mm,
+	top=4mm,bottom=3mm,
+rounded corners,
+arc=2.5mm,
+outer arc=1mm,
+arc is curved,
+borderline={0.65pt}{2mm}{gray},
+%borderline={1pt}{-3pt}{blue},
+width=\textwidth,
+height=#1,
+breakable
+}
+
+\newtcolorbox{exercise}{
+	colframe=%cyan!74,
+	black!70,
+%	fonttitle=\bfseries,
+	leftrule=2.1pt,
+	rightrule=2.1pt,
+	bottomrule=2pt,
+	boxsep=1mm,
+	top=4mm,bottom=3mm,
+	opacityback=0,
+	rounded corners,arc=4pt,
+	width=\textwidth,
+	enhanced jigsaw,
+	before skip=5mm,
+	after skip=5mm,
+	breakable,
+	title=\MyExample
+}
+
+\newcommand{\solu}[1]{\begin{tcolorbox}[enhanced,colback=white,boxrule=0pt,frame hidden,
+		borderline west={1.3pt}{-1mm}{black!65!},breakable]
+		\sol #1
+\end{tcolorbox}}
+
+\newcommand{\blank}[1]{\begin{tcolorbox}[enhanced,colback=white,boxrule=0pt,frame hidden,
+		borderline west={1.3pt}{-1mm}{black!65!}]
+		\sol\vspace{#1}
+\end{tcolorbox}}
+
+\newcommand{\mycases}[2]
+{\left\{\vphantom{\begin{array}{c} a\\[#1]
+	\end{array}}\right.\kern#2}
+
+\newtcbox{\tcbeqnote}[1][gray]{on line,
+	arc=3pt,outer arc=0pt,colback=#1!8!white,colframe=#1!70!black,
+	boxsep=0pt,left=1pt,right=1pt,top=2pt,bottom=2pt,
+	boxrule=0pt,bottomrule=.5pt,toprule=.5pt,
+	leftrule=.5pt,rightrule=.5pt}
+
+\fboxrule=.8pt
+
+\newcommand{\eqnote}[1]{\tcbeqnote{\footnotesize\s#1\s}}
+
+
+\newcommand{\eqnotec}[2]{\tcbeqnote[#1]{\footnotesize\s#2\s}}
+
+\newcommand{\Eqnote}[1]{
+	\fcolorbox{miunblue}{miunblue!8!white!80}{ #1}}
+
+\newcommand{\solnote}[2]{\vspace{-8mm}\begin{flushright}
+	\begin{tcolorbox}
+		[arc=6pt,outer arc=0pt,width={#1},
+		boxsep=0pt,boxrule=.9pt,left=2mm,right=0pt]
+		\small #2
+	\end{tcolorbox}
+\end{flushright}}
+
+\definecolor{emphcol}{RGB}{175,175,175}
+
+\newtcbox{\emphbox}[1][red]{on line,
+	arc=0pt,
+	outer arc=0pt,
+	colback=#1!4!white,
+	colframe=#1!70!black,
+	boxsep=0pt,
+	left=1pt,right=1pt,
+	top=2pt,bottom=2pt,
+	boxrule=0pt,
+	bottomrule=1pt,
+%	toprule=.6pt
+}
+
+
+
+
+\definecolor{miunblue}{RGB}{20,120,199}
+\definecolor{miunyellow}{RGB}{252,210,19}
+
+
+\colorlet{markc1}{blue!21!white!70}
+\colorlet{markc2}{red!24!white!70}
+\colorlet{markc3}{miunyellow!65!white!70}
+\colorlet{markc4}{miunblue!45!white!70}
+
+
+\newcommand{\tikzmark}[2]
+{\tikz[baseline]{\node[anchor=base,inner sep=1.2pt] (#1)
+		{#2};}}
+
+\newcommand{\tikzmarkfill}[3]
+{\tikz[baseline]{\node[fill=#3,anchor=base,inner sep=1.2pt] (#1)
+		{#2};}}
+	
+
+\newcommand{\Exercise}{\begin{center}\medskip
+\tikz[baseline]{\node[anchor=base] (exercise)
+	{{\fit \huge Exercise} };}
+\end{center}
+	\begin{tikzpicture}[overlay,gray!85,opacity=.85, line width=1.3pt]
+	\draw [decorate, decoration={brace,amplitude=5pt}]
+	($(exercise.south west)+(.05mm,0)$)
+	-- ($(exercise.north west)+(.05mm,0)$);
+	\draw [decorate, decoration={brace,amplitude=5pt,mirror}]
+	($(exercise.south east)+(-.05mm,0)$)
+	-- ($(exercise.north east)+(-.05mm,0)$);
+	\draw
+	($(exercise.south west)+(-5mm,2mm)$)
+	-- +(-45mm,0);
+	\draw
+	($(exercise.south east)+(5mm,2mm)$)
+	-- +(45mm,0);
+	\end{tikzpicture}
+	}
+
+\renewcommand{\figurename}{图}
+
+\newcommand\MySecSquare{%
+	\leavevmode\hbox to 1.2ex{\hss\vrule height 1.3ex width 1.1ex depth -.2ex\hss}}
+
+
+\definecolor{structurecolor}{RGB}{60,113,183}
+
+
+\titleformat%
+{\chapter}[hang]%
+{\bfseries}{%
+\begin{minipage}[t]{0.2\linewidth}
+\vspace{0pt}% do not remove
+\begin{tikzpicture}
+\node[
+outer sep=0pt,
+text width=20mm,
+minimum height=15mm,
+fill=Blue4,
+font=\color{white}\fontsize{53}{4}\selectfont,
+align=center
+] (num) {\thechapter};
+\node[
+outer sep=0pt,
+inner sep=0pt,
+anchor=south,
+font=\color{Blue4}\Large\normalfont
+] at ([yshift=3pt]num.north) {\textsc{C\,h\,a\,p\,t\,e\,r}};
+\end{tikzpicture}
+\end{minipage}%
+}
+{0pt}%
+{%
+\begin{minipage}[t]{.7\linewidth}%
+    \vspace{2pt} % do not remove
+    \color{Blue4}
+    \rule{\linewidth}{2.5pt}\\\vskip -1.75\baselineskip%
+    \rule{\linewidth}{.7pt}\vskip 5pt
+    {\LARGE\raggedright\textsf{#1}}
+\end{minipage}%
+}
+
+
+\titleformat{\section}
+{\normalfont\Large\fd\color{Blue3}}{\MySecSquare\ \;\thesection}{1em}{#1}
+\titleformat{name=\section,numberless}
+{\normalfont\Large\fd}{\MySecSquare}{1em}{#1}
+
+
+\titleformat{\subsection}
+{\normalfont\large\fd\color{miunblue}}
+{\tikz \fill[miunblue](0,0) circle (.15) ;\;\;\thesubsection}{1em}{#1}
+\titleformat{name=\subsection,numberless}
+{\normalfont\large\fd\color{miunblue}}
+{\tikz \fill[miunblue](0,0) circle (.15) ;}{1em}{#1}

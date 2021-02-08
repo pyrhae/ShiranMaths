@@ -1,0 +1,112 @@
+\documentclass[a4paper]{ctexart}
+\usepackage[margin=0.5cm,bottom=2cm]{geometry}
+\usepackage{kpfonts}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{eso-pic}
+\usepackage{tcolorbox}
+\usepackage{fontspec}
+
+
+\setCJKmainfont{Noto Serif CJK SC}
+
+
+\setCJKfamilyfont{f06}{Noto Sans CJK SC Bold}
+
+\setmainfont{Butler}
+%\newfontfamily\fit{AGaramondPro-Italic}
+%\newfontfamily\fit{GentiumAlt Italic}
+\newfontfamily\fit[Scale=.92]{Georgia Italic}
+\newfontfamily\fb[Scale=1.2]{Gabriola}
+\newfontfamily\fc[Scale=1.27]{Nyala}
+\newfontfamily\fd[Scale=1.03]{Book Antiqua}
+\newfontfamily\fe[Scale=1.07]{Lucida Calligraphy Italic}
+
+\definecolor{miunblue}{RGB}{20,120,199}
+
+\tcbuselibrary{skins}
+
+\tcbset{
+    pccstyle/.style={
+        enhanced,%flushright upper,
+        boxrule=1.4pt,
+        width=18cm,
+        colback=white,colframe=black!50!miunblue,
+        drop fuzzy midday shadow=black!50!miunblue
+    }
+}
+
+\AddToShipoutPicture{% from package eso-pic: put something to the background
+    \AtPageCenter{% start the bar at the bottom right of the page
+        \put(-\LenToUnit{.465\paperwidth},-\LenToUnit{.16\paperheight}){% move it to the middle
+            %{\transparent{.5}{\includegraphics[width=20cm]{50th_mathematicsproof}}}
+            \begin{tcolorbox}[pccstyle,left=0mm,top=0mm,bottom=0mm]
+                \includegraphics[width=18cm]{equations}
+            \end{tcolorbox}
+        }%
+    }%
+    \AtPageLowerLeft{% start the bar at the bottom right of the page
+        \put(\LenToUnit{\dimexpr\paperwidth-3cm},){% move it to the top right
+            \color{white!30!miunblue!70}\rule{3cm}{\LenToUnit\paperheight}%
+        }%
+        \put(\LenToUnit{\dimexpr\paperwidth-2.5cm},\LenToUnit{18.5cm}){% move it to the top right
+            \color{gray}\scalebox{7}{$\sum$}
+        }%
+        \put(\LenToUnit{\dimexpr\paperwidth-2.3cm},\LenToUnit{14cm}){% move it to the top right
+            \color{gray}\scalebox{7}{$\int$}
+        }%
+        \put(\LenToUnit{\dimexpr\paperwidth-2.1cm},\LenToUnit{10cm}){% move it to the top right
+            \color{gray}\scalebox{7}{$e$}
+        }%
+        \put(\LenToUnit{\dimexpr\paperwidth-2.5cm},\LenToUnit{6.5cm}){% move it to the top right
+            \color{gray}\scalebox{7}{$\pi$}
+        }%
+        \put(\LenToUnit{\dimexpr\paperwidth-2cm},\LenToUnit{2cm}){% move it to the top right
+            \color{gray}\scalebox{7}{$i$}
+        }%
+    }%
+}
+
+\pagestyle{empty}
+\begin{document}
+
+\vspace*{2mm}
+
+\begin{center}
+% \includegraphics[scale=.01]{logo.jpg}
+\end{center}
+
+\vspace*{14mm}
+\mbox{}\hfill\scalebox{2}{
+    \begin{tcolorbox}[pccstyle,left=1pt,right=1pt,
+    top=1pt,bottom=1pt,width=35mm]
+        {%\bfseries
+        	\begin{center}
+            % \fd\scriptsize Cambridge International AS \& A Level
+            \fd\scriptsize 牧羊教育  
+        	\end{center}}
+%        {\large \itshape Mathematics \par}
+%        {\large Portland Community College }
+    \end{tcolorbox}
+}\hspace{17mm}
+
+\vspace{97mm}
+\centering
+
+\scalebox{2}{%
+    \begin{tcolorbox}[pccstyle,width=36mm]
+        {\begin{center}
+        \fe  高中数学 \\ [1mm]High School  
+        \\ [1mm]Mathematics %  2 \& 3
+        \end{center} }
+    \end{tcolorbox}
+}
+
+\vspace{41mm}
+
+{\huge 邱明豫 \;\; 编}
+\vspace{-24mm}
+
+% \begin{flushleft}
+% \includegraphics[scale=.27]{code.jpeg}
+% \end{flushleft}
+\end{document}
